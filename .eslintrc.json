@@ -1,3 +1,21 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "semi": ["error", "never"],
+    "quotes": ["error", "double"],
+    "prettier/prettier": ["error", {
+      "endOfLine": "auto",
+      "semi": false,
+      "singleQuote": false,
+      "tabWidth": 2
+    }],
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "curly": ["error", "all"],
+    "camelcase": ["error"],
+    "eqeqeq": ["error"],
+    "no-unused-vars": ["error"],
+    "no-multiple-empty-lines": ["error"]
+  },
+  "plugins": ["prettier"]
 }
