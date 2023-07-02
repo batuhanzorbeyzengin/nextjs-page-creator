@@ -13,5 +13,5 @@ export function NextIcon() {
         clipRule="evenodd"
       ></path>
     </svg>
-  );
+  )
 }

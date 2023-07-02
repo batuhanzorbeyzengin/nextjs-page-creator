@@ -1,28 +1,28 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Link from "next/link";
-import data from "../../public/tableData.json";
-import { PreviousIcon } from "./icons/Previous";
-import { NextIcon } from "./icons/Next";
+import { useState } from "react"
+import Link from "next/link"
+import data from "../../public/tableData.json"
+import { PreviousIcon } from "./icons/Previous"
+import { NextIcon } from "./icons/Next"
 
-const itemsPerPage = 10;
+const itemsPerPage = 10
 
 export function Table() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1)
 
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const totalPages = Math.ceil(data.length / itemsPerPage)
 
-  const pages = [...Array(totalPages).keys()].map((i) => i + 1);
+  const pages = [...Array(totalPages).keys()].map((i) => i + 1)
 
   const handleClick = (page) => {
-    setCurrentPage(page);
-  };
+    setCurrentPage(page)
+  }
 
   const pageData = data.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
-  );
+  )
   return (
     <div className="relative overflow-x-auto rounded-lg">
       <table className="w-full text-sm text-left text-gray-500">
@@ -59,10 +59,7 @@ export function Table() {
         </thead>
         <tbody>
           {pageData.map((item) => (
-            <tr
-              key={item.id}
-              className="bg-white border-b hover:bg-gray-50 "
-            >
+            <tr key={item.id} className="bg-white border-b hover:bg-gray-50">
               <td className="w-4 p-4">
                 <div className="flex items-center">
                   <input
@@ -84,15 +81,31 @@ export function Table() {
               >
                 {item.name}
               </th>
-              <td className="px-6 py-4"><i>{item.target}</i></td>
-              <td className="px-6 py-4">{item.model}</td>
-              <td className="px-6 py-4 text-[#009600]">{item.status}</td>
               <td className="px-6 py-4">
+                <i>Url path is /{item.target}</i>
+              </td>
+              <td className="px-6 py-4">{item.model}</td>
+              <td
+                className={
+                  item.status === "Published"
+                    ? "px-6 py-4 text-[#009600]"
+                    : "px-6 py-4 text-gray-800"
+                }
+              >
+                {item.status}
+              </td>
+              <td className="flex items-center px-6 py-4 space-x-3">
                 <Link
-                  href={"#"}
+                  href={`/content/${item.id}`}
                   className="font-medium text-blue-600 hover:underline"
                 >
                   Edit
+                </Link>
+                <Link
+                  href={`/content/${item.id}`}
+                  className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                >
+                  Remove
                 </Link>
               </td>
             </tr>
@@ -151,5 +164,5 @@ export function Table() {
         </ul>
       </nav>
     </div>
-  );
+  )
 }

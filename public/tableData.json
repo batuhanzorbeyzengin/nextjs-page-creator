@@ -2,9 +2,16 @@
     {
       "id": 1,
       "name": "Home",
-      "target": "Url path is /home",
+      "target": "home",
       "model": "page",
       "status": "Published"
+    },
+    {
+      "id": 2,
+      "name": "About",
+      "target": "about",
+      "model": "page",
+      "status": "Draft"
     }
 ]
   

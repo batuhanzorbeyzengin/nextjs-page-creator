@@ -23,7 +23,7 @@ export function TopBar() {
       </div>
       <div className="flex gap-x-1 text-sm font-medium">
         <div>
-          <span className="px-2 text-gray-400">page-creator.io</span>
+          <span className="px-2 text-gray-500">page-creator.io</span>
         </div>
         {pathname ? (
           <>
@@ -38,7 +38,7 @@ export function TopBar() {
                   <React.Fragment key={index}>
                     <span className="text-gray-600">/</span>
                     <span>
-                      <span className="animate-[highlight_1s_ease-in-out_1] rounded-full px-1.5 py-0.5 text-gray-300">
+                      <span className="animate-[highlight_1s_ease-in-out_1] rounded-full px-1.5 py-0.5 text-gray-400">
                         {segment}
                       </span>
                     </span>
