@@ -36,7 +36,6 @@ export function TopBar() {
                 }
                 return (
                   <React.Fragment key={index}>
-                    {console.log("fragment içerisindeyim")}
                     <span className="text-gray-600">/</span>
                     <span>
                       <span className="animate-[highlight_1s_ease-in-out_1] rounded-full px-1.5 py-0.5 text-gray-300">

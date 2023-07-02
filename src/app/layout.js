@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
           </div>
           <div className="relative min-h-screen overflow-hidden bg-gray-50 col-span-11">
             <TopBar />
-            <div className="absolute inset-0 bg-[url(/img/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+            <div className="absolute inset-0 bg-[url(/img/grid.svg)] bg-center"></div>
             <div className="relative">
               <div className="divide-y divide-gray-300/50">
                 <div className="leading-7 lg:px-5 lg:py-3">{children}</div>
