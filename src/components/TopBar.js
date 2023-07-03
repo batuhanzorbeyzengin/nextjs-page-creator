@@ -45,13 +45,15 @@ export function TopBar() {
         </div>
       </div>
       <div className="p-3.5 lg:px-5 lg:py-3">
-        <button
-          type="button"
-          onClick={() => setIsOpen(!isOpen)}
-          className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-        >
-          Create page
-        </button>
+        {pathname === "/content" ? (
+          <button
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+            className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          >
+            Create page
+          </button>
+        ) : null}
         <Transition appear show={isOpen} as={Fragment}>
           <Dialog
             as="div"
@@ -90,8 +92,16 @@ export function TopBar() {
                     </Dialog.Title>
                     <div className="mt-2">
                       <form className="flex flex-col space-y-6">
-                        <input type="text" placeholder="Page Name" className="border border-gray-300 py-2 px-4 rounded-lg" />
-                        <input type="text" placeholder="Path" className="border border-gray-300 py-2 px-4 rounded-lg" />
+                        <input
+                          type="text"
+                          placeholder="Page Name"
+                          className="border border-gray-300 py-2 px-4 rounded-lg"
+                        />
+                        <input
+                          type="text"
+                          placeholder="Path"
+                          className="border border-gray-300 py-2 px-4 rounded-lg"
+                        />
                       </form>
                     </div>
 
