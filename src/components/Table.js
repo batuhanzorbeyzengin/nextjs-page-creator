@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import data from "../../public/tableData.json"
 import { PreviousIcon } from "./icons/Previous"
@@ -10,6 +10,7 @@ const itemsPerPage = 10
 
 export function Table() {
   const [currentPage, setCurrentPage] = useState(1)
+  const [selectedItems, setSelectedItems] = useState([])
 
   const totalPages = Math.ceil(data.length / itemsPerPage)
 
@@ -23,6 +24,24 @@ export function Table() {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   )
+
+  const toggleAll = (event) => {
+    setSelectedItems(
+      event.target.checked ? pageData.map((item) => item.id) : []
+    )
+  }
+
+  const toggleItem = (itemId) => {
+    setSelectedItems(
+      selectedItems.includes(itemId)
+        ? selectedItems.filter((id) => id !== itemId)
+        : [...selectedItems, itemId]
+    )
+  }
+
+  useEffect(() => {
+    setSelectedItems([]) // clear selection when page changes
+  }, [currentPage])
   return (
     <div className="relative overflow-x-auto rounded-lg">
       <table className="w-full text-sm text-left text-gray-500">
@@ -34,6 +53,11 @@ export function Table() {
                   id="checkbox-all-search"
                   type="checkbox"
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                  onChange={toggleAll}
+                  checked={
+                    pageData.length > 0 &&
+                    selectedItems.length === pageData.length
+                  }
                 />
                 <label htmlFor="checkbox-all-search" className="sr-only">
                   checkbox
@@ -66,6 +90,8 @@ export function Table() {
                     id={`checkbox-table-search-${item.id}`}
                     type="checkbox"
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+                    checked={selectedItems.includes(item.id)}
+                    onChange={() => toggleItem(item.id)}
                   />
                   <label
                     htmlFor={`checkbox-table-search-${item.id}`}

@@ -8,8 +8,6 @@ import { LockIcon } from "./icons/Lock"
 export function TopBar() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
-
-  console.log(isOpen)
   return (
     <div className="flex justify-between relative z-20">
       <div className="flex items-center gap-x-2 p-3.5 lg:px-5 lg:py-3">
@@ -90,8 +88,8 @@ export function TopBar() {
                     >
                       Create Page
                     </Dialog.Title>
-                    <div className="mt-2">
-                      <form className="flex flex-col space-y-6">
+                    <div className="mt-4">
+                      <form className="flex flex-col space-y-3">
                         <input
                           type="text"
                           placeholder="Page Name"
@@ -111,7 +109,7 @@ export function TopBar() {
                         className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                         onClick={() => setIsOpen(!isOpen)}
                       >
-                        Got it, thanks!
+                        Create
                       </button>
                     </div>
                   </Dialog.Panel>
