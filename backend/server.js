@@ -1,11 +1,16 @@
 const express = require('express')
+const config = require('./config')
 const app = express()
-const port = 3001
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use(express.json())
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+app.use('/', require('./src/routes'));
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ message: err.message });
+});
+
+app.listen(config.PORT, () =>
+  console.log(`Server ready at: http://localhost:${config.PORT}`),
+)
