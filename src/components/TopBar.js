@@ -7,7 +7,6 @@ import { useFormik } from "formik"
 import * as yup from "yup"
 import { LockIcon } from "./icons/Lock"
 import { newPage } from "@/services/pages"
-import { toast } from "react-toastify"
 
 export function TopBar() {
   const pathname = usePathname()
@@ -86,13 +85,11 @@ function Modal({ isOpen, setIsOpen }) {
       newPage(values)
         .then((res) => {
           console.log(res)
-          toast.success("Success!")
           setIsOpen(!isOpen)
           setPath("")
           resetForm()
         })
         .catch((error) => {
-          toast.error("Error!")
           console.error(error)
           setSubmitting(false)
         })

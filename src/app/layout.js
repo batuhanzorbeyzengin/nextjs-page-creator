@@ -3,8 +3,6 @@ import { Header } from "@/components/Header"
 import { TopBar } from "@/components/TopBar"
 
 import "./globals.css"
-import ToastProvider from "@/context/ToastProvider"
-import { ToastContainer } from 'react-toastify';
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -26,11 +24,7 @@ export default function RootLayout({ children }) {
             <div className="absolute inset-0 bg-[url(/img/grid.svg)] bg-center"></div>
             <div className="relative">
               <div className="divide-y divide-gray-300/50">
-                <div className="leading-7 lg:px-5 lg:py-3">
-                  <ToastProvider>
-                    {children}
-                  </ToastProvider>
-                </div>
+                <div className="leading-7 lg:px-5 lg:py-3">{children}</div>
               </div>
             </div>
           </div>
