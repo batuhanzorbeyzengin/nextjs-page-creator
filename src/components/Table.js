@@ -40,7 +40,7 @@ export function Table() {
   }
 
   useEffect(() => {
-    setSelectedItems([]) // clear selection when page changes
+    setSelectedItems([])
   }, [currentPage])
   return (
     <div className="relative overflow-x-auto rounded-lg">
@@ -128,7 +128,7 @@ export function Table() {
                   Edit
                 </Link>
                 <Link
-                  href={`/content/${item.id}`}
+                  href={"#"}
                   className="font-medium text-red-600 dark:text-red-500 hover:underline"
                 >
                   Remove
