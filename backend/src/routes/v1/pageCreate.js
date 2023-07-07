@@ -4,7 +4,6 @@ const { pageCreate } = require("../../services/v1/allPagesService")
 
 router.post("/", async (req, res, next) => {
   try {
-    console.log("router::", req);
     const message = await pageCreate({
       name: req.body.pageName,
       target: req.body.path,
