@@ -1,25 +1,8 @@
 [
   {
-    "name": "Home1",
-    "target": "123132",
-    "model": "page",
-    "status": "draft"
-  },
-  {
-    "name": "Home2",
-    "target": "12313123",
-    "model": "page",
-    "status": "draft"
-  },
-  {
-    "name": "home3",
-    "target": "asdadasd",
-    "model": "page",
-    "status": "draft"
-  },
-  {
-    "name": "Home4",
-    "target": "asdasdasdasd",
+    "id": "6bcdde10-3071-49bb-aada-5ffcdc632edb",
+    "name": "Home",
+    "target": "deneme",
     "model": "page",
     "status": "draft"
   }

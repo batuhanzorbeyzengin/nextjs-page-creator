@@ -1,8 +1,10 @@
-const fs = require("fs").promises // promise tabanlı fs modülünü kullanacağız
+const fs = require("fs").promises
 const path = require("path")
+const { v4: uuidv4 } = require('uuid');
 
 const pageCreate = async ({ name, target, model, status }) => {
   const data = {
+    id: uuidv4(),
     name: name,
     target: target,
     model: model,
@@ -13,23 +15,17 @@ const pageCreate = async ({ name, target, model, status }) => {
 
   let fileContent
   try {
-    // dosyayı okuma
     fileContent = await fs.readFile(filePath, "utf8")
   } catch (err) {
     if (err.code === "ENOENT") {
-      // Dosya mevcut değilse, boş bir dizi oluştur
       fileContent = "[]"
     } else {
       console.error("Hata:", err)
       throw err
     }
   }
-
-  // JSON'ı diziye dönüştürme ve yeni veriyi ekleyin
   const contentArray = JSON.parse(fileContent)
   contentArray.push(data)
-
-  // Yeni içeriği dosyaya geri yazın
   return fs
     .writeFile(filePath, JSON.stringify(contentArray, null, 2))
     .then(() => "Successfully.")
@@ -39,6 +35,24 @@ const pageCreate = async ({ name, target, model, status }) => {
     })
 }
 
+const pageList = async () => {
+  const filePath = path.join(__dirname, "../../../tmp/page.json")
+
+  try {
+    const fileContent = await fs.readFile(filePath, "utf8")
+    return JSON.parse(fileContent)
+  } catch (err) {
+    if (err.code === "ENOENT") {
+      console.error(`File doesn't exist: ${err}`)
+      return []
+    } else {
+      console.error("An error occurred:", err)
+      throw err
+    }
+  }
+}
+
 module.exports = {
   pageCreate,
+  pageList,
 }

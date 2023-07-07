@@ -2,15 +2,25 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import data from "../../public/tableData.json"
 import { PreviousIcon } from "./icons/Previous"
 import { NextIcon } from "./icons/Next"
+import { getPages } from "@/services/pages"
 
 const itemsPerPage = 10
 
 export function Table() {
   const [currentPage, setCurrentPage] = useState(1)
   const [selectedItems, setSelectedItems] = useState([])
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getPages()
+      setData(response)
+    }
+
+    fetchData()
+  }, [])
 
   const totalPages = Math.ceil(data.length / itemsPerPage)
 
