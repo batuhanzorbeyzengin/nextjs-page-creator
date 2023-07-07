@@ -1,8 +1,8 @@
 [
   {
-    "id": "6bcdde10-3071-49bb-aada-5ffcdc632edb",
+    "id": "de209c9e-5489-4405-9fee-90864067949e",
     "name": "Home",
-    "target": "deneme",
+    "target": "home",
     "model": "page",
     "status": "draft"
   }

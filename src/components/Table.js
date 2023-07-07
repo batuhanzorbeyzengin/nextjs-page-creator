@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { PreviousIcon } from "./icons/Previous"
 import { NextIcon } from "./icons/Next"
-import { getPages } from "@/services/pages"
+import { deletePage, getPages } from "@/services/pages"
 
 const itemsPerPage = 10
 
@@ -52,6 +52,16 @@ export function Table() {
   useEffect(() => {
     setSelectedItems([])
   }, [currentPage])
+
+  const handleDelete = async (id) => {
+    try {
+      await deletePage(id)
+      const updatedData = await getPages()
+      setData(updatedData)
+    } catch (error) {
+      console.error(error)
+    }
+  }
   return (
     <div className="relative overflow-x-auto rounded-lg">
       <table className="w-full text-sm text-left text-gray-500">
@@ -137,12 +147,12 @@ export function Table() {
                 >
                   Edit
                 </Link>
-                <Link
-                  href={"#"}
+                <button
+                  onClick={() => handleDelete(item.id)}
                   className="font-medium text-red-600 dark:text-red-500 hover:underline"
                 >
                   Remove
-                </Link>
+                </button>
               </td>
             </tr>
           ))}

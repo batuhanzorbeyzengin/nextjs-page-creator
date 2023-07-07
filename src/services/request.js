@@ -21,3 +21,4 @@ function request(url, data = false, method = "GET") {
 
 export const post = (url, data) => request(url, data, "POST")
 export const get = (url) => request(url)
+export const deleteRequest = (url) => request(url, false, "DELETE")

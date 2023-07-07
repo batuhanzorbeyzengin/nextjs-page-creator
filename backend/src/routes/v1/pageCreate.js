@@ -10,7 +10,6 @@ router.post("/", async (req, res, next) => {
       model: req.body.model,
       status: req.body.status,
     })
-    console.log(message)
     res.status(200).json({ message: message })
   } catch (error) {
     console.error(error)
