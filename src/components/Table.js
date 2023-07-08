@@ -102,60 +102,68 @@ export function Table() {
           </tr>
         </thead>
         <tbody>
-          {pageData.map((item) => (
-            <tr key={item.id} className="bg-white border-b hover:bg-gray-50">
-              <td className="w-4 p-4">
-                <div className="flex items-center">
-                  <input
-                    id={`checkbox-table-search-${item.id}`}
-                    type="checkbox"
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                    checked={selectedItems.includes(item.id)}
-                    onChange={() => toggleItem(item.id)}
-                  />
-                  <label
-                    htmlFor={`checkbox-table-search-${item.id}`}
-                    className="sr-only"
-                  >
-                    checkbox
-                  </label>
-                </div>
-              </td>
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
-                {item.name}
-              </th>
-              <td className="px-6 py-4">
-                <i>Url path is /{item.target}</i>
-              </td>
-              <td className="px-6 py-4">{item.model}</td>
-              <td
-                className={
-                  item.status === "Published"
-                    ? "px-6 py-4 text-[#009600]"
-                    : "px-6 py-4 text-gray-800"
-                }
-              >
-                {item.status}
-              </td>
-              <td className="flex items-center px-6 py-4 space-x-3">
-                <Link
-                  href={`/content/${item.id}`}
-                  className="font-medium text-blue-600 hover:underline"
-                >
-                  Edit
-                </Link>
-                <button
-                  onClick={() => handleDelete(item.id)}
-                  className="font-medium text-red-600 dark:text-red-500 hover:underline"
-                >
-                  Remove
-                </button>
+          {pageData.length === 0 ? (
+            <tr>
+              <td colSpan="6" className="text-center py-4 bg-gray-300">
+                No Data
               </td>
             </tr>
-          ))}
+          ) : (
+            pageData.map((item) => (
+              <tr key={item.id} className="bg-white border-b hover:bg-gray-50">
+                <td className="w-4 p-4">
+                  <div className="flex items-center">
+                    <input
+                      id={`checkbox-table-search-${item.id}`}
+                      type="checkbox"
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+                      checked={selectedItems.includes(item.id)}
+                      onChange={() => toggleItem(item.id)}
+                    />
+                    <label
+                      htmlFor={`checkbox-table-search-${item.id}`}
+                      className="sr-only"
+                    >
+                      checkbox
+                    </label>
+                  </div>
+                </td>
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                >
+                  {item.name}
+                </th>
+                <td className="px-6 py-4">
+                  <i>Url path is /{item.target}</i>
+                </td>
+                <td className="px-6 py-4">{item.model}</td>
+                <td
+                  className={
+                    item.status === "Published"
+                      ? "px-6 py-4 text-[#009600]"
+                      : "px-6 py-4 text-gray-800"
+                  }
+                >
+                  {item.status}
+                </td>
+                <td className="flex items-center px-6 py-4 space-x-3">
+                  <Link
+                    href={`/content/${item.id}`}
+                    className="font-medium text-blue-600 hover:underline"
+                  >
+                    Edit
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(item.id)}
+                    className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                  >
+                    Remove
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
       <nav

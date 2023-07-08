@@ -82,7 +82,7 @@ function Modal({ isOpen, setIsOpen }) {
     validationSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
       newPage(values)
-        .then((res) => {
+        .then(() => {
           setIsOpen(!isOpen)
           setPath("")
           resetForm()
