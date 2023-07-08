@@ -8,8 +8,6 @@ import { newPage } from "@/services/pages"
 import { Modal } from "./Modal"
 import { LockIcon, LoadingIcon } from "./icons"
 
-const inputClass = "border border-gray-300 py-2 px-4 rounded-lg"
-
 const PathSegment = ({ segment }) => (
   <Fragment>
     <span className="text-gray-600">/</span>
@@ -115,18 +113,18 @@ function TopModal({ isOpen, setIsOpen }) {
             name="pageName"
             onChange={handleChange}
             value={values.pageName}
-            className={inputClass}
+            className={`border py-2 px-4 rounded-lg ${errors.pageName && touched.pageName ? "border-red-500" : "border-gray-300"}`}
           />
-          {errors.pageName && touched.pageName && <div>{errors.pageName}</div>}
+          {errors.pageName && touched.pageName && <div className="text-[13px] text-red-500">{errors.pageName}</div>}
           <input
             type="text"
             placeholder="Path"
             name="path"
             onChange={handlePathChange}
             value={path}
-            className={inputClass}
+            className={`border py-2 px-4 rounded-lg ${errors.path && touched.path ? "border-red-500" : (touched.path ? "border-gray-300" : "")}`}
           />
-          {errors.path && touched.path && <div>{errors.path}</div>}
+          {errors.path && touched.path && <div className="text-[13px] text-red-500">{errors.path}</div>}
         </form>
       </div>
       <div className="mt-4">
