@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "fdf548c3-7791-418f-b01b-13fbc2474e9a",
+    "name": "Home",
+    "target": "demo",
+    "model": "page",
+    "status": "draft"
+  },
+  {
+    "id": "3bb763ce-476f-4dee-bcd2-c6e8dfa791d6",
+    "name": "About",
+    "target": "about",
+    "model": "page",
+    "status": "draft"
+  }
+]

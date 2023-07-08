@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { PreviousIcon } from "./icons/Previous"
-import { NextIcon } from "./icons/Next"
+import { NextIcon, PreviousIcon } from "./icons"
 import { deletePage, getPages } from "@/services/pages"
 
 const itemsPerPage = 10
