@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { NextIcon, PreviousIcon } from "./icons"
-import { deletePage, getPages } from "@/services/pages"
+import { PageService } from "@/services"
 
 const itemsPerPage = 10
 
@@ -14,7 +14,7 @@ export function Table() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getPages()
+      const response = await PageService.getPages()
       setData(response)
     }
 
@@ -54,8 +54,8 @@ export function Table() {
 
   const handleDelete = async (id) => {
     try {
-      await deletePage(id)
-      const updatedData = await getPages()
+      await PageService.deletePage(id)
+      const updatedData = await PageService.getPages()
       setData(updatedData)
     } catch (error) {
       console.error(error)

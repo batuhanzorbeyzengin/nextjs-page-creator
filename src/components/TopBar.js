@@ -4,7 +4,7 @@ import { Fragment, useState, useEffect, useMemo } from "react"
 import { usePathname } from "next/navigation"
 import { pageFormValidationSchema } from "@/validations"
 import { useFormik } from "formik"
-import { newPage } from "@/services/pages"
+import { PageService } from "@/services"
 import { Modal } from "./Modal"
 import { LockIcon, LoadingIcon } from "./icons"
 
@@ -80,7 +80,7 @@ function TopModal({ isOpen, setIsOpen }) {
     },
     validationSchema: pageFormValidationSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
-      newPage(values)
+      PageService.newPage(values)
         .then(() => {
           setIsOpen(!isOpen)
           setPath("")
