@@ -1,13 +1,25 @@
+"use client"
+
 import { Fragment } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 
-export function Modal({ isOpen, setIsOpen, children, title }) {
+export function Modal({
+  isOpen,
+  setIsOpen,
+  children,
+  title,
+  isStatic = false,
+}) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-10"
-        onClose={() => setIsOpen(!isOpen)}
+        onClose={() => {
+          if (!isStatic) {
+            setIsOpen(!isOpen)
+          }
+        }}
       >
         <Transition.Child
           as={Fragment}

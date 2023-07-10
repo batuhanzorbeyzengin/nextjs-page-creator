@@ -1,3 +1,5 @@
+import { NewProject } from "@/components/NewProject";
+
 export default function Home() {
   return (
     <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
@@ -17,6 +19,7 @@ export default function Home() {
           </button>
         </div>
       </div>
+      <NewProject />
     </div>
   )
 }
